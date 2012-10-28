@@ -1,0 +1,844 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head id="Head"><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><meta content="text/javascript" http-equiv="Content-Script-Type"><meta content="text/css" http-equiv="Content-Style-Type"><meta id="MetaDescription" name="DESCRIPTION" content="Multivariate Adaptive Regression Splines (MARSplines) help from StatSoft"><meta id="MetaKeywords" name="KEYWORDS" content="Multivariate Adaptive Regression Splines, MARSplines,help,learn"><meta id="MetaCopyright" name="COPYRIGHT" content="Copyright (c) 2012 by www.statsoft.com"><meta id="MetaAuthor" name="AUTHOR" content="www.statsoft.com"><meta name="RESOURCE-TYPE" content="DOCUMENT"><meta name="DISTRIBUTION" content="GLOBAL"><meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW"><meta name="REVISIT-AFTER" content="1 DAYS"><meta name="RATING" content="GENERAL"><meta http-equiv="PAGE-ENTER" content="RevealTrans(Duration=0,Transition=1)"><style id="StylePlaceholder" type="text/css"></style><link id="APortals__default_" rel="stylesheet" type="text/css" href="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/default.css"><link id="APortals__default_Skins_StatSoftTemplates_" rel="stylesheet" type="text/css" href="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/skin.css"><link id="APortals__default_Containers_StatSoft_" rel="stylesheet" type="text/css" href="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/container.css"><link id="APortals__default_Containers_StatSoft_Title_StatSoft_css" rel="stylesheet" type="text/css" href="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/Title_StatSoft.css"><link id="APortals_0_" rel="stylesheet" type="text/css" href="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/portal.css"><!--[if LT IE 7]><link id="IE6Minus" rel="stylesheet" type="text/css" href="/Portals/_default/Skins/StatSoftTemplates/css/ie6skin.css" /><![endif]--><script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/gtm.js" async=""></script><script type="text/javascript" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/jquery.js"></script><title>
+	Multivariate Adaptive Regression Splines (MARSplines)
+</title><script type="text/javascript" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/tsr.js"></script></head>
+<body id="Body">
+    <form name="Form" method="post" action="/textbook/multivariate-adaptive-regression-splines/" id="Form" enctype="multipart/form-data">
+<div>
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2NDIyOTEzMjkPZBYGZg8WAh4EVGV4dAV5PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPmQCAQ9kFg4CBA8WAh4HVmlzaWJsZWhkAgUPFgIeB2NvbnRlbnQFSE11bHRpdmFyaWF0ZSBBZGFwdGl2ZSBSZWdyZXNzaW9uIFNwbGluZXMgKE1BUlNwbGluZXMpIGhlbHAgZnJvbSBTdGF0U29mdGQCBg8WAh8CBT9NdWx0aXZhcmlhdGUgQWRhcHRpdmUgUmVncmVzc2lvbiBTcGxpbmVzLCBNQVJTcGxpbmVzLGhlbHAsbGVhcm5kAgcPFgIfAgUmQ29weXJpZ2h0IChjKSAyMDEyIGJ5IHd3dy5zdGF0c29mdC5jb21kAggPFgQfAmQfAWhkAgkPFgIfAgUQd3d3LnN0YXRzb2Z0LmNvbWQCDA8WAh8CBQ1JTkRFWCwgRk9MTE9XZAICD2QWAgIBD2QWBAIED2QWAmYPZBYQZg9kFgJmD2QWAmYPFgIfAWgWAmYPZBYCZg9kFgYCAw8QZGQWAGQCDw9kFgJmDw8WBh4ISW1hZ2VVcmwFEi9pbWFnZXMvZXhwYW5kLmdpZh4NQWx0ZXJuYXRlVGV4dAUITWF4aW1pemUeB1Rvb2xUaXAFCE1heGltaXplFgoeB3VzZXJjdHIFCVVzYWJpbGl0eR4HdXNlcmtleQUUQ29udHJvbFBhbmVsVmlzaWJsZTAeB29uY2xpY2sFUWlmIChfX2Rubl9TZWN0aW9uTWF4TWluKHRoaXMsICAnZG5uX0ljb25CYXIuYXNjeF9yb3dDb250cm9sUGFuZWwnKSkgcmV0dXJuIGZhbHNlOx4IbWF4X2ljb24FEi9pbWFnZXMvZXhwYW5kLmdpZh4IbWluX2ljb24FFC9pbWFnZXMvY29sbGFwc2UuZ2lmZAIRDxYCHgVzdHlsZQUNZGlzcGxheTpub25lOxYCAgEPZBYCAgEPZBYQAgEPEGRkFgBkAgUPEGRkFgBkAgcPEGRkFgBkAgsPEGRkFgBkAg8PEGRkFgBkAhUPEGRkFgBkAhkPEGRkFgFmZAIdDxBkZBYAZAIBD2QWCGYPFgIfAAUePGRpdiBjbGFzcz0ibGFuZ3VhZ2Utb2JqZWN0IiA+ZAICDxAPFgIfAWhkZBYAZAIEDxYCHwFoZAIGDxYCHwAFBjwvZGl2PmQCBA9kFgJmDw8WBh4IQ3NzQ2xhc3MFBHVzZXIfAAUIUmVnaXN0ZXIeBF8hU0ICAmRkAgUPZBYCZg8PFgYfDAUEdXNlch8ABQVMb2dpbh8NAgJkZAIHD2QWBGYPFgIeBWNsYXNzBStEbm5Nb2R1bGUgRG5uTW9kdWxlLUROTl9IVE1MIERubk1vZHVsZS0xNTEyFgICAQ9kFg4CAQ8PFgIfAWhkZAIDDw8WAh8BaGRkAgUPZBYCZg8PFgIfBQUITWluaW1pemUWAh8IBVNpZiAoX19kbm5fQ29udGFpbmVyTWF4TWluX09uQ2xpY2sodGhpcywgJ2Rubl9jdHIxNTEyX01vZHVsZUNvbnRlbnQnKSkgcmV0dXJuIGZhbHNlOxYCZg8PFgYfAwU6L1BvcnRhbHMvX2RlZmF1bHQvQ29udGFpbmVycy9TdGF0U29mdC9pbWFnZXMvRE5OLW1pbnVzLmdpZh8EBQhNaW5pbWl6ZR8FBQhNaW5pbWl6ZWRkAgkPFgIfDgUhTm9ybWFsIGNfY29udGVudHBhbmUgRE5OQWxpZ25sZWZ0FgICAg8PZBYCHw4FHEROTk1vZHVsZUNvbnRlbnQgTW9kRE5OSFRNTEMWAgIBD2QWAgICDxYCHwFoZAILD2QWAmYPDxYCHwFoZGQCDQ9kFgJmDw8WAh8BaGRkAg8PZBYCZg8PFgIfAWhkZAIBDxYCHw4FK0Rubk1vZHVsZSBEbm5Nb2R1bGUtRE5OX0hUTUwgRG5uTW9kdWxlLTI0NzAWAgIBD2QWEAIBDw8WAh8BaGRkAgMPDxYCHwFoZGQCBQ9kFgJmDw8WAh8FBQhNaW5pbWl6ZRYCHwgFU2lmIChfX2Rubl9Db250YWluZXJNYXhNaW5fT25DbGljayh0aGlzLCAnZG5uX2N0cjI0NzBfTW9kdWxlQ29udGVudCcpKSByZXR1cm4gZmFsc2U7FgJmDw8WBh8DBTovUG9ydGFscy9fZGVmYXVsdC9Db250YWluZXJzL1N0YXRTb2Z0L2ltYWdlcy9ETk4tbWludXMuZ2lmHwQFCE1pbmltaXplHwUFCE1pbmltaXplZGQCBw9kFgJmDw8WAh8BaGRkAgkPZBYCAgIPD2QWAh8OBRxETk5Nb2R1bGVDb250ZW50IE1vZEROTkhUTUxDZAILD2QWAmYPDxYCHwFoZGQCDQ9kFgJmDw8WAh8BaGRkAg8PZBYCZg8PFgIfAWhkZAIIDw8WAh8AZGRkAgoPDxYCHwAFNU11bHRpdmFyaWF0ZSBBZGFwdGl2ZSBSZWdyZXNzaW9uIFNwbGluZXMgKE1BUlNwbGluZXMpZGQCCw8PFgIfAAUKMjoyNzozOSBQTWRkAgoPFCsAAhQrAANkZGRkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAgUQZG5uJFNlYXJjaEJ1dHRvbgUuZG5uJGN0cjE1MTIkZG5uQUNUSU9OQlVUVE9OMyRjdGwwMCRjdGwwMCRjdGwwMPPwmVhAZ8bTcsu8p1tAKoqz3Cew" type="hidden">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form'];
+if (!theForm) {
+    theForm = document.Form;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/WebResource.js" type="text/javascript"></script>
+
+
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/dnncore.js" type="text/javascript"></script>
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/ScriptResource.js" type="text/javascript"></script>
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/ScriptResource_002.js" type="text/javascript"></script>
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/dnn_002.js" type="text/javascript"></script>
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/dnn.js" type="text/javascript"></script>
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/dnn_003.js" type="text/javascript"></script>
+<div>
+
+	<input name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCgL6uffjDwLqpYC2CQKkks2HAwLnl7GfCQLPorf0BgLRo82gDQLsosCuCAKEt9bPBQL+5PGyAgLR9YnYDkluvollAeSt8zsrbTirydd/4ugH" type="hidden">
+</div><script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager', document.getElementById('Form'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls([], [], [], 90);
+//]]>
+</script>
+
+        
+        
+
+
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/jsapi" type="text/javascript"></script>
+
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        if (e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+    
+    
+//-->
+</script>
+
+
+
+
+<script language="Javascript" type="text/javascript">
+   
+
+   google.load('search', '1.0'); 
+
+   function OnLoad() 
+   { 
+      var searchControl = new google.search.SearchControl();
+      var drawOptions = new google.search.DrawOptions();
+      drawOptions.setInput(document.getElementById("gss_input"));
+      var options = new google.search.SearcherOptions(); 
+      options.setExpandMode(google.search.SearchControl.EXPAND_MODE_OPEN);
+      options.setRoot(document.getElementById("gcsResults"));
+      // options.setNoResultsString("No results found.");  <-- This option is broken as of 11/10/2008 
+      searchControl.setLinkTarget(google.search.Search.LINK_TARGET_BLANK);
+      searchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET); 
+      var siteSearch = new google.search.WebSearch();
+      siteSearch.setSiteRestriction('000365147034520072290:xwkjy77oy8e', '');
+      // siteSearch.setQueryAddition("-statsoft.com/textbook");
+
+      searchControl.addSearcher(siteSearch, options);
+      searchControl.draw(null, drawOptions);
+      
+   }
+
+   google.setOnLoadCallback(OnLoad, true);
+
+   function blockError() { return true; }
+   window.onerror = blockError;
+
+
+
+   </script><script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/a" type="text/javascript"></script><link href="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/defaulten.css" type="text/css" rel="stylesheet"><script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/defaulten.js" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" media="all" type="text/css" href="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/est1.css">
+
+
+	<style type="text/css">
+
+DIV.SearchIcon
+               {
+            position: absolute;
+            right: -35px;
+            top: 0px;
+            z-index: 50;
+        }
+	
+                
+        DIV.SearchBorderx
+        {
+            position: absolute;
+            right: 55px;
+            top: 0px;
+            height: 20px;
+             z-index:5000;
+        }
+        DIV.search-02
+        {
+            position: absolute;
+            right: 22px;
+            top: 2px;
+            width: 25px;
+            height: 22px;
+             z-index: 50;
+        }
+        DIV.search-03
+        {
+            position: absolute;
+            right: 26px;
+            top: -1px;
+            width: 16px;
+            height: 22px;
+        }
+        
+        .RequiredCSS
+        {
+           color:#848484;
+        }
+        
+        
+
+	
+
+
+        
+        .breadcrumb
+        {
+            
+          
+    font: 12px Arial, Helvetica, sans-serif;
+    background-image:url('/images/bc_bg.png'); 
+    background-repeat:repeat-x;
+    color:#777;
+    border-bottom:solid 1px #cacaca;
+    border-top:solid 1px #cacaca;
+    width:100%;
+    overflow:hidden;
+    margin:0px;
+    padding:  3px 3px 3px 3px;
+    
+    font-weight:normal;
+     
+     vertical-align: middle;
+
+
+              
+              
+        }
+        
+        .sep
+        {
+
+    background-image:url('/images/bc_bg.png'); 
+    background-repeat:repeat-x;
+    
+    color:#9b9b9b;
+    border-bottom:solid 1px #cacaca;
+    border-top:solid 1px #cacaca;
+
+    overflow:hidden;
+     vertical-align: middle;
+     
+     
+   
+    
+    
+    
+        }
+        
+        .sepx
+        {
+
+    background-image:url('/images/bc_bg.png'); 
+    background-repeat:repeat-x;
+    
+    color:#9b9b9b;
+    border-bottom:solid 1px #cacaca;
+    border-top:solid 1px #cacaca;
+
+    overflow:hidden;
+     vertical-align: middle;
+   
+    
+    
+    
+        }
+        
+        #sep
+        {
+
+     border-left:solid 1px #cacaca;
+     
+     
+  
+    
+        }
+
+        
+        #sep a:link,
+#sep a:visited {
+font: 12px Arial, Helvetica, sans-serif;
+	color:#0043FF;
+	text-decoration:none;
+	 font-weight:normal;
+	}
+	
+	#sep a:hover {
+font: 12px Arial, Helvetica, sans-serif;
+	color:#0043FF;
+	text-decoration: underline;
+	 font-weight:normal;
+	}
+	
+	        #estx a:link,
+#estx a:visited {
+font: 13px Arial, Helvetica, sans-serif;
+	color:#ffffff;
+	text-decoration:none;
+	 font-weight:bold;
+	}
+	
+	#estx a:hover {
+font: 13px Arial, Helvetica, sans-serif;
+	color:#ffffff;
+	text-decoration: none;
+	 font-weight:bold;
+	  
+	}
+ 
+        
+</style>
+
+<!--[if IE 6]>
+<style type="text/css">
+/*
+ * If we are using IE 7 we must override our position attribute for our #bg div
+ */
+
+	
+	.estcontent
+	{
+	  width:75%;
+	  height:600px;
+	}
+</style>
+<![endif]-->
+	
+
+
+
+                 <div id="dnn_ControlPanel">
+</div>
+                    <div class="language-object">
+
+
+</div>
+  <div class="scroll2">
+
+
+
+<script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/loadFlash.js" language="Javascript" type="text/javascript"></script>
+
+<div class="est2">
+	
+<!--	                    <script type="text/javascript">
+	                        loadFlash('/textbook/flash/statsoft2.swf', '185', '148', 'ffffff', '8',
+'transparent', '/textbook/flash/sc1.png', '0', 'mycontent');
+                    </script>-->
+	
+<a href="http://www.statsoft.com/solutions/sas-alternative"><img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/statsoft-sas-185x198.jpg" height="198" width="185"></a>
+<!-- <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="185" height="148" id="statsoft2" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<param name="movie" value="/textbook/flash/statsoft2.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="/textbook/flash/statsoft2.swf" quality="high" bgcolor="#ffffff" width="185" height="148" name="statsoft2" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	</object> -->
+	
+<div class="estcontent2">
+<div class="buttonsA"><ul>
+	<li>
+		<ul class="leftbuttonA" id="leftbuttonA">
+			
+			<li><a href="http://www.statsoft.com/textbook/elementary-concepts-in-statistics/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b1.png" alt="" align="top"> Elementary Concepts</a></li>
+					</ul>
+
+	</li>
+</ul></div>
+<div class="buttonsB"><ul>
+	<li>
+		<ul class="leftbuttonB" id="leftbuttonB">
+			<li><a href="http://www.statsoft.com/textbook/statistics-glossary/" target="_blank">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b42.png" alt="" align="top"> Statistics Glossary</a></li>
+					</ul>
+
+	</li>
+</ul></div>
+<div class="buttons"><ul>
+	<li>
+		<ul class="leftbutton" id="leftbutton">
+			
+			<li><a href="http://www.statsoft.com/textbook/basic-statistics/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b2.png" alt="" align="top"> Basic Statistics</a></li>
+			<li><a href="http://www.statsoft.com/textbook/anova-manova/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b3.png" alt="" align="top"> ANOVA / MANOVA</a></li>
+			<li><a href="http://www.statsoft.com/textbook/association-rules/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b4.png" alt="" align="top"> Association Rules</a></li>
+			<li><a href="http://www.statsoft.com/textbook/boosting-trees-regression-classification/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b5.png" alt="" align="top"> Boosting Trees</a></li>
+			<li><a href="http://www.statsoft.com/textbook/canonical-analysis/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b6.png" alt="" align="top"> Canonical Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/chaid-analysis/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b7.png" alt="" align="top"> CHAID Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/classification-and-regression-trees/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b8.png" alt="" align="top"> C &amp; R Trees</a></li>
+			<li><a href="http://www.statsoft.com/textbook/classification-trees/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b9.png" alt="" align="top"> Classification Trees</a></li>
+			<li><a href="http://www.statsoft.com/textbook/cluster-analysis/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b10.png" alt="" align="top"> Cluster Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/correspondence-analysis/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b11.png" alt="" align="top"> Correspondence Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/data-mining-techniques/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b12.png" alt="" align="top"> Data Mining Techniques</a></li>
+			<li><a href="http://www.statsoft.com/textbook/discriminant-function-analysis/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b13.png" alt="" align="top"> Discriminant Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/distribution-fitting/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b14.png" alt="" align="top"> Distribution Fitting</a></li>
+			<li><a href="http://www.statsoft.com/textbook/experimental-design/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b15.png" alt="" align="top"> Experimental Design</a></li>
+			<li><a href="http://www.statsoft.com/textbook/principal-components-factor-analysis/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b16.png" alt="" align="top"> Factor Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/general-discriminant-analysis/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b17.png" alt="" align="top"> General Discrim. Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/general-linear-models/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b18.png" alt="" align="top"> General Linear Models</a></li>
+			<li><a href="http://www.statsoft.com/textbook/generalized-additive-models/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b19.png" alt="" align="top"> Generalized Additive Mod.</a></li>
+			<li><a href="http://www.statsoft.com/textbook/generalized-linear-models/?button=1">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b20.png" alt="" align="top"> Generalized Linear Mod.</a></li>
+			<li id="2"><a href="http://www.statsoft.com/textbook/general-regression-models/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b21.png" alt="" align="top"> General Regression Mod.</a></li>
+			<li><a href="http://www.statsoft.com/textbook/graphical-analytic-techniques/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b22.png" alt="" align="top"> Graphical Techniques</a></li>
+			<li><a href="http://www.statsoft.com/textbook/independent-components-analysis/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b23.png" alt="" align="top"> Ind.Components Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/multiple-regression/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b24.png" alt="" align="top"> Linear Regression</a></li>
+			<li><a href="http://www.statsoft.com/textbook/log-linear-analysis-frequency-tables/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b25.png" alt="" align="top"> Log-Linear Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b26.png" alt="" align="top"> MARSplines</a></li>
+			<li><a href="http://www.statsoft.com/textbook/machine-learning/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b27.png" alt="" align="top"> Machine Learning</a></li>
+			<li><a href="http://www.statsoft.com/textbook/multidimensional-scaling/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b28.png" alt="" align="top"> Multidimensional Scaling</a></li>
+			<li><a href="http://www.statsoft.com/textbook/neural-networks/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b29.png" alt="" align="top"> Neural Networks</a></li>
+			<li><a href="http://www.statsoft.com/textbook/nonlinear-estimation/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b30.png" alt="" align="top"> Nonlinear Estimation</a></li>
+			<li><a href="http://www.statsoft.com/textbook/nonparametric-statistics/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b31.png" alt="" align="top"> Nonparametric Statistics</a></li>
+			<li><a href="http://www.statsoft.com/textbook/partial-least-squares/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b32.png" alt="" align="top"> Partial Least Squares</a></li>
+			<li><a href="http://www.statsoft.com/textbook/power-analysis/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b33.png" alt="" align="top"> Power Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/process-analysis/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b34.png" alt="" align="top"> Process Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/quality-control-charts/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b35.png" alt="" align="top"> Quality Control Charts</a></li>
+			<li><a href="http://www.statsoft.com/textbook/reliability-and-item-analysis/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b36.png" alt="" align="top"> Reliability / Item Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/structural-equation-modeling/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b37.png" alt="" align="top"> SEPATH (Structural eq.)</a></li>
+			<li><a href="http://www.statsoft.com/textbook/survival-failure-time-analysis/?button=2">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b38.png" alt="" align="top"> Survival Analysis</a></li>
+			<li><a href="http://www.statsoft.com/textbook/text-mining/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b39.png" alt="" align="top"> Text Mining</a></li>
+			<li><a href="http://www.statsoft.com/textbook/time-series-analysis/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b40.png" alt="" align="top"> Time Series / Forecasting</a></li>
+			<li><a href="http://www.statsoft.com/textbook/variance-components-mixed-model-anova-ancova/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b41.png" alt="" align="top"> Variance Components</a></li>
+			<li><a href="http://www.statsoft.com/textbook/statistical-advisor/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b43.png" alt="" align="top"> Statistical Advisor</a></li>
+			<li><a href="http://www.statsoft.com/textbook/distribution-tables/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b44.png" alt="" align="top"> Distribution Tables</a></li>
+			<li><a href="http://www.statsoft.com/textbook/references-cited/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b45.png" alt="" align="top"> References Cited</a></li>
+			
+						
+		</ul>
+
+	</li>
+</ul>
+
+</div>
+<div class="buttonsC"><ul>
+	<li>
+		<ul class="leftbuttonC" id="leftbuttonC">
+		<li id="3"><a href="mailto:info@statsoft.com?subject=Electronic%20Statistics%20Textbook%20Comment">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/b46.png" alt="" align="top"> Send Comments</a></li>
+	<li><a href="http://www.statsoft.com/textbook/business-solutions/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/business.png" alt="" align="top"> Business Solutions</a></li>
+	<li><a href="http://www.statsoft.com/textbook/free-resources/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/free.png" alt="" align="top"> Free Resources</a></li>
+	<li><a href="http://www.statsoft.com/textbook/about-textbook/?button=3">&nbsp;&nbsp;<img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/about.png" alt="" align="top"> About Textbook</a></li>
+</ul>
+
+	</li>
+</ul></div>
+</div>
+</div>
+
+
+</div>
+
+<div class="scroll">
+
+
+<div class="est"><div class="estcontent"><div id="estx"><img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/spacer.gif" alt="" height="1" width="750"><br><a href="http://www.statsoft.com/"><img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/logoest.gif" alt="" border="0"><br><b>Creators of <em style="font-size: 15px">STATISTICA</em> Data Analysis Software and Services</b></a></div>
+
+  <div class="search">
+<div id="dnn_Panel1" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'dnn_SearchButton')">
+	
+                                <input name="dnn$Search" id="dnn_Search" class="gss_input" style="height:17px;width:236px;" type="text"> 
+                                <input name="dnn$SearchButton" id="dnn_SearchButton" class="searchbutton" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/search.gif" style="border-width:0px;" align="absmiddle" type="image">
+                                
+</div>
+</div>
+
+<div class="login" id="login">Welcome, <a id="dnn_USER1_cmdRegister" class="user" href="javascript:__doPostBack('dnn$USER1$cmdRegister','')">Register</a>
+                            &nbsp;|&nbsp;<a id="dnn_LOGIN1_cmdLogin" class="user" href="javascript:__doPostBack('dnn$LOGIN1$cmdLogin','')">Login</a></div>
+
+<div class="searchtext">Search the Electronic Statistics Textbook</div>
+
+<br>
+<div id="sep"><a href="http://www.statsoft.com/" class="breadcrumb">StatSoft.com</a><img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/bc_separator.png" class="sep"><span id="dnn_dnnBreadcrumb_lblBreadcrumb"><a href="http://www.statsoft.com/textbook/" class="breadcrumb">Textbook</a><img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/bc_separator.png" class="sep"><span class="breadcrumb">Multivariate Adaptive Regression Splines</span></span><img src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/bc_bgend.png" class="sepx"></div>
+<div id="dnn_ContentPane" valign="top" class="ContentPane"><div class="DnnModule DnnModule-DNN_HTML DnnModule-1512"><a name="1512"></a>
+<div class="c_head c_head_blue">
+    <div class="head_title">
+        <!--div class="c_actions">
+            
+        </div-->
+        <div class="c_icon">
+            
+        </div>
+ 
+    </div>
+    <!--div class="title_vis">
+        <a onclick="if (__dnn_ContainerMaxMin_OnClick(this, 'dnn_ctr1512_ModuleContent')) return false;" id="dnn_ctr1512_dnnVISIBILITY_cmdVisibility" title="Minimize" href="javascript:__doPostBack('dnn$ctr1512$dnnVISIBILITY$cmdVisibility','')"><img id="dnn_ctr1512_dnnVISIBILITY_imgVisibility" title="Minimize" src="/Portals/_default/Containers/StatSoft/images/DNN-minus.gif" alt="Minimize" style="border-width:0px;" /></a>    <span><span><input type="image" name="dnn$ctr1512$dnnACTIONBUTTON3$ctl00$ctl00$ctl00" title="Print" src="/images/action_print.gif" alt="Print" style="border-width:0px;" /></span>&nbsp;&nbsp;</span>
+    </div-->
+
+</div>
+<div class="c_content">
+    <div id="dnn_ctr1512_ContentPane" class="Normal c_contentpane DNNAlignleft">
+    <!-- Start_Module_1512 --><div id="dnn_ctr1512_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr1512_HtmlModule_lblContent" class="Normal">
+		<h1>Multivariate Adaptive Regression Splines (MARSplines)</h1>
+<p><a name="index"></a></p>
+<ul>
+    <li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#intro">Introductory Overview</a>
+    <ul>
+        <li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#regression">Regression Problems</a></li>
+        <li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#mars">Multivariate Adaptive Regression Splines</a></li>
+        <li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#selection">Model Selection and Pruning </a></li>
+        <li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#apps">Applications</a></li>
+    </ul>
+    </li>
+    <li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#Technical%20Notes%20algorithm">Technical Notes: The MARSplines Algorithm</a></li>
+    <li><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#Technical%20Notes%20model">Technical Notes: The MARSplines Model</a></li>
+</ul>
+<h2><a name="intro"></a>Introductory Overview</h2>
+<p><span style="font-style: italic">Multivariate Adaptive Regression Splines (MARSplines)</span> is an implementation of techniques popularized by Friedman (1991) for solving regression-type problems (see also, <a href="http://www.statsoft.com/textbook/statistics-glossary/m.aspx?button=m#Multiple%20Regression">Multiple Regression</a>),
+ with the main purpose to predict the values of a continuous dependent 
+or outcome variable from a set of independent or predictor variables. 
+There are a large number of methods available for fitting models to 
+continuous variables, such as a linear regression [e.g., <a href="http://www.statsoft.com/textbook/statistics-glossary/m.aspx?button=m#Multiple%20Regression"><i>Multiple Regression</i></a>, <a href="http://www.statsoft.com/textbook/statistics-glossary/g.aspx?button=g#general%20Linear%20Model"><i>General Linear Model (GLM)</i></a>], nonlinear regression <span style="font-style: italic">(<a href="http://www.statsoft.com/textbook/statistics-glossary/g.aspx?button=g#generalized%20Linear%20Model">Generalized Linear/Nonlinear Models</a>)</span>, regression trees (see <a href="http://www.statsoft.com/textbook/statistics-glossary/c.aspx?button=c#Cart"><i>Classification and Regression Trees</i></a>), <a style="font-style: italic" href="http://www.statsoft.com/textbook/statistics-glossary/c.aspx?button=c#Chaid">CHAID</a>, <a style="font-style: italic" href="http://www.statsoft.com/textbook/statistics-glossary/n.aspx?button=n#Neural%20Networks">Neural Networks</a>, etc. <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->(see also Hastie, Tibshirani, and Friedman, 2001, for an overview).</p>
+<p>MARSplines is a nonparametric regression procedure that makes no 
+assumption about the underlying functional relationship between the 
+dependent and independent variables. Instead, MARSplines constructs this
+ relation from a set of coefficients and basis functions that are 
+entirely "driven" from the regression data. In a sense, the method is 
+based on the "divide and conquer" strategy, which partitions the input 
+space into regions, each with its own regression equation. This makes 
+MARSplines particularly suitable for problems with higher input 
+dimensions (i.e., with more than 2 variables), where the <a href="http://www.statsoft.com/textbook/statistics-glossary/c.aspx?button=c#Curse">curse of dimensionality</a> would likely create problems for other techniques.</p>
+<p>The MARSplines technique has become particularly popular in the area of <a href="http://www.statsoft.com/textbook/statistics-glossary/d.aspx?button=d#Data%20Mining">data mining</a>
+ because it does not assume or impose any particular type or class of 
+relationship (e.g., linear, logistic, etc.) between the predictor 
+variables and the dependent (outcome) variable of interest. Instead, 
+useful models (i.e., models that yield accurate predictions) can be 
+derived even in situations where the relationship between the predictors
+ and the dependent variables is non-monotone and difficult to 
+approximate with parametric models. For more information about this 
+technique and how it compares to other methods for nonlinear regression 
+(or regression trees), see Hastie, Tibshirani, and Friedman (2001).</p>
+<h3><a name="regression"></a>Regression Problems</h3>
+<p>Regression problems are used to determine the relationship between a 
+set of dependent variables (also called output, outcome, or response 
+variables) and one or more independent variables (also known as input or
+ predictor variables). The dependent variable is the one whose values 
+you want to predict, based on the values of the independent (predictor) 
+variables. For instance, one might be interested in the number of car 
+accidents on the roads, which can be caused by 1) bad weather and 2) 
+drunk driving. In this case one might write, for example,</p>
+<p>Number_of_Accidents = <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->Some Constant + 0.5*Bad_Weather + 2.0*Drunk_Driving</p>
+<p>The variable <span style="font-style: italic">Number of Accidents</span> is the dependent variable that is thought to be caused by (among other variables) <span style="font-style: italic">Bad Weather</span> and <span style="font-style: italic">Drunk Driving</span> (hence the name dependent variable). Note that the independent variables are multiplied by factors, i.e., <span style="font-style: italic">0.5</span> and <span style="font-style: italic">2.0</span>.
+ These are known as regression coefficients. The larger these 
+coefficients, the stronger the influence of the independent variables on
+ the dependent variable. If the two predictors in this simple 
+(fictitious) example were measured on the same scale (e.g., if the 
+variables were standardized to a mean of <span style="font-style: italic">0.0</span> and standard deviation <span style="font-style: italic">1.0</span>), then <span style="font-style: italic">Drunk Driving</span> could be inferred to contribute 4 times more to car accidents than <span style="font-style: italic">Bad Weather</span>.
+ (If the variables are not measured on the same scale, then direct 
+comparisons between these coefficients are not meaningful, and, usually,
+ some other standardized measure of predictor "importance" is included 
+in the results.) <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}--></p>
+<p>For additional details regarding these types of statistical models, refer to <span style="font-style: italic"><a href="http://www.statsoft.com/textbook/statistics-glossary/m.aspx?button=m#Multiple%20Regression">Multiple Regression</a></span> or <span style="font-style: italic"><a href="http://www.statsoft.com/textbook/statistics-glossary/g.aspx?button=g#general%20Linear%20Model">General Linear Models (GLM)</a></span>, as well as <i><a href="http://www.statsoft.com/textbook/general-regression-models/">General Regression Models (GRM)</a>.
+ In general, the social and natural sciences regression procedures are 
+widely used in research. Regression allows the researcher to ask (and 
+hopefully answer) the general question "what is the best predictor of 
+..." For example, educational researchers might want to learn what the 
+best predictors of success in high-school are. Psychologists may want to
+ determine which personality variable best predicts social adjustment. 
+Sociologists may want to find out which of the multiple social 
+indicators best predict whether a new immigrant group will adapt and be 
+absorbed into society.</i></p>
+<h3><a name="mars"></a>Multivariate Adaptive Regression Splines</h3>
+<p>The car accident example we considered previously is a typical 
+application for linear regression, where the response variable is 
+hypothesized to depend linearly on the predictor variables. Linear 
+regression also falls into the category of so-called parametric 
+regression, which assumes that the nature of the relationships (but not 
+the specific parameters) between the dependent and independent variables
+ is known <span style="font-style: italic">a priori</span> (e.g., is linear). By contrast, nonparametric regression (see <a style="font-style: italic" href="http://www.statsoft.com/textbook/statistics-glossary/n.aspx?button=n#Nonparametrics">Nonparametrics</a>)
+ does not make any such assumption as to how the dependent variables are
+ related to the predictors. Instead it allows the regression function to
+ be "driven" directly from data.</p>
+<p>Multivariate Adaptive Regression Splines is a nonparametric 
+regression procedure that makes no assumption about the underlying 
+functional relationship between the dependent and independent variables.
+ Instead, MARSplines constructs this relation from a set of coefficients
+ and so-called basis functions that are entirely determined from the 
+regression data. You can think of the general "mechanism" by which the 
+MARSplines algorithm operates as multiple piecewise linear regression 
+(see <span style="font-style: italic"><a href="http://www.statsoft.com/textbook/statistics-glossary/n.aspx?button=n#Nonlinear%20Estimation">Nonlinear Estimation</a></span>),
+ where each breakpoint (estimated from the data) defines the "region of 
+application" for a particular (very simple) linear regression equation.</p>
+<p><b>Basis functions.</b> Specifically, MARSplines uses two-sided 
+truncated functions of the form (as shown below) as basis functions for 
+linear or nonlinear expansion, which approximates the relationships 
+between the response and predictor variables.</p>
+<p><img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; width: 323px; float: none; height: 264px; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/mars1.gif" border="0"></p>
+<p>Shown above is a simple example of two basis functions (t-x)+ and 
+(x-t)+ (adapted from Hastie, et al., 2001, Figure 9.9). Parameter <span style="font-style: italic">t</span>
+ is the knot of the basis functions (defining the "pieces" of the 
+piecewise linear regression); these knots (parameters) are also 
+determined from the data. The "+" signs next to the terms <span style="font-style: italic">(t-x)</span> and <span style="font-style: italic">(x-t)</span>
+ simply denote that only positive results of the respective equations 
+are considered; otherwise the respective functions evaluate to zero. 
+This can also be seen in the illustration.</p>
+<p><b>The MARSplines model.</b> The basis functions together with the model parameters (estimated via <a href="http://www.statsoft.com/textbook/statistics-glossary/l.aspx?button=l#Least%20Squares%20Estimator">least squares estimation</a>)
+ are combined to produce the predictions given the inputs. The general 
+MARSplines model equation (see Hastie et al., 2001, equation 9.19) is 
+given as:</p>
+<p><img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; width: 187px; float: none; height: 39px; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSPLINEequation1.gif" border="0"></p>
+<p>where the summation is over the <span style="font-style: italic">M</span> nonconstant terms in the model (further details regarding the model are also provided in <a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#Technical%20Notes%20model">Technical Notes</a>). To summarize, <span style="font-style: italic">y</span> is predicted as a function of the predictor variables <span style="font-style: italic">X</span> (and their interactions); this function consists of an intercept parameter (<img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; float: none; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSa.gif" border="0">) and the weighted (by <img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; float: none; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSb.gif" border="0">) sum of one or more basis functions <img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; float: none; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSc.gif" border="0">,
+ of the kind illustrated earlier. You can also think of this model as 
+"selecting" a weighted sum of basis functions from the set of (a large 
+number of) basis functions that span all values of each predictor (i.e.,
+ that set would consist of one basis function, and parameter <span style="font-style: italic">t</span>,
+ for each distinct value for each predictor variable). The MARSplines 
+algorithm then searches over the space of all inputs and predictor 
+values (knot locations t) as well as interactions between variables. 
+During this search, an increasingly larger number of basis functions are
+ added to the model (selected from the set of possible basis functions),
+ to maximize an overall least squares goodness-of-fit criterion. As a 
+result of these operations, MARSplines automatically determines the most
+ important independent variables as well as the most significant 
+interactions among them. The details of this algorithm are further 
+described in <a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#Technical%20Notes%20algorithm">Technical Notes</a>, as well as in Hastie et al., 2001).</p>
+<p><b>Categorical predictors.</b> In practice, both continuous and 
+categorical predictors could be used, and will often yield useful 
+results. However, the basic MARSplines algorithm assumes that the 
+predictor variables are continuous in nature, and, for example, the 
+computed knots program will usually not coincide with actual class codes
+ found in the categorical predictors. For a detailed discussion of 
+categorical predictor variables in MARSplines, see Friedman (1993).</p>
+<p><b>Multiple dependent (outcome) variables.</b> The MARSplines 
+algorithm can be applied to multiple dependent (outcome) variables. In 
+this case, the algorithm will determine a common set of basis functions 
+in the predictors, but estimate different coefficients for each 
+dependent variable. This method of treating multiple outcome variables 
+is not unlike some <a href="http://www.statsoft.com/textbook/statistics-glossary/n.aspx?button=n#Neural%20Networks">neural networks</a>
+ architectures, where multiple outcome variables can be predicted from 
+common neurons and hidden layers; in the case of MARSplines, multiple 
+outcome variables are predicted from common basis functions, with 
+different coefficients.</p>
+<p><b>MARSplines and classification problems.</b> Because MARSplines can
+ handle multiple dependent variables, it is easy to apply the algorithm 
+to classification problems as well. First, code the classes in the 
+categorical response variable into multiple indicator variables (e.g., 1
+ = observation belongs to class k, 0 = observation does not belong to 
+class k); then apply the MARSplines algorithm to fit a model, and 
+compute predicted (continuous) values or scores; finally, for 
+prediction, assign each case to the class for which the highest score is
+ predicted (see also Hastie, Tibshirani, and Freedman, 2001, for a 
+description of this procedure). Note that this type of application will 
+yield heuristic classifications that may work very well in practice, but
+ is not based on a statistical model for deriving classification 
+probabilities.</p>
+<h3><a name="selection"></a>Model Selection and Pruning</h3>
+<p>In general, nonparametric models are adaptive and can exhibit a high degree of flexibility that may ultimately result in <a href="http://www.statsoft.com/textbook/statistics-glossary/o.aspx?button=o#Overfitting">overfitting</a>
+ if no measures are taken to counteract it. Although such models can 
+achieve zero error on training data, they have the tendency to perform 
+poorly when presented with new observations or instances (i.e., they do 
+not generalize well to the prediction of "new" cases). MARSplines, like 
+most methods of this kind, tend to overfit the data as well. To combat 
+this problem, MARSplines uses a pruning technique (similar to <a href="http://www.statsoft.com/textbook/statistics-glossary/p.aspx?button=p#Pruning">pruning</a> in classification trees) to limit the complexity of the model by reducing the number of its basis functions.</p>
+<p><b>MARSplines as a predictor (feature) selection method.</b> This 
+feature - the selection of and pruning of basis functions - makes this 
+method a very powerful tool for predictor selection. The MARSplines 
+algorithm will pick up only those basis functions (and those predictor 
+variables) that make a "sizeable" contribution to the prediction (refer 
+to <a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#Technical%20Notes%20algorithm">Technical Notes</a> for details).</p>
+<h3><a name="apps"></a>Applications</h3>
+<p>Multivariate Adaptive Regression Splines have become very popular recently for finding predictive models for "difficult" <a href="http://www.statsoft.com/textbook/statistics-glossary/d.aspx?button=d#Data%20Mining">data mining</a>
+ problems, i.e., when the predictor variables do not exhibit simple 
+and/or monotone relationships to the dependent variable of interest. 
+Alternative models or approaches that you can consider for such cases 
+are <a style="font-style: italic" href="http://www.statsoft.com/textbook/statistics-glossary/c.aspx?button=c#Chaid">CHAID</a>, <span style="font-style: italic"><a href="http://www.statsoft.com/textbook/statistics-glossary/c.aspx?button=c#Cart">Classification and Regression Trees</a></span>, or any of the many <a style="font-style: italic" href="http://www.statsoft.com/textbook/statistics-glossary/n.aspx?button=n#Neural%20Networks">Neural Networks</a> architectures available. Because of the specific manner in which MARSplines selects predictors (<a href="http://www.statsoft.com/textbook/statistics-glossary/b.aspx?button=b#Basis%20Functions">basis functions</a>)
+ for the model, it does generally "well" in situations where 
+regression-tree models are also appropriate, i.e., where hierarchically 
+organized successive splits on the predictor variables yield good 
+(accurate) predictions. In fact, instead of considering this technique 
+as a generalization of multiple regression (as it was presented in this 
+introduction), you may consider MARSplines as a generalization of 
+regression trees, where the "hard" binary splits are replaced by 
+"smooth" basis functions. Refer to Hastie, Tibshirani, and Friedman 
+(2001) for additional details.</p>
+<table align="right">
+    <tbody>
+        <tr>
+            <td><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#index"><font size="1">To index</font></a></td>
+        </tr>
+    </tbody>
+</table>
+<h2><a name="Technical Notes algorithm"></a>Technical Notes: The MARSplines Algorithm</h2>
+<p>Implementing MARSplines involves a two step procedure that is applied
+ successively until a desired model is found. In the first step, we 
+build the model, i.e. increase its complexity by adding basis functions 
+until a preset (user-defined) maximum level of complexity has been 
+reached. Then we begin a backward procedure to remove the least 
+significant basis functions from the model, i.e. those whose removal 
+will lead to the least reduction in the (least-squares) goodness of fit.
+ This algorithm is implemented as follows:</p>
+<ol style="list-style-type: decimal" type="1">
+    <li class="kadov-p" style="margin-left: -20px">
+    <p>Start with the simplest model involving only the constant basis function.</p>
+    </li>
+    <li class="kadov-p" style="margin-left: -20px">
+    <p>Search the space of basis functions, for each variable and for 
+all possible knots, and add those which maximize a certain measure of 
+goodness of fit (minimize prediction error).</p>
+    </li>
+    <li class="kadov-p" style="margin-left: -20px">
+    <p>Step 2 is recursively applied until a model of pre-determined maximum complexity is derived.</p>
+    </li>
+    <li class="kadov-p" style="margin-left: -20px">
+    <p>Finally, in the last stage, a pruning procedure is applied where 
+those basis functions are removed that contribute least to the overall (<a href="http://www.statsoft.com/textbook/statistics-glossary/l.aspx?button=l#Least%20Squares%20Estimator">least squares</a>) goodness of fit.</p>
+    </li>
+</ol>
+<table align="right">
+    <tbody>
+        <tr>
+            <td><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#index"><font size="1">To index</font></a></td>
+        </tr>
+    </tbody>
+</table>
+<h2><a name="Technical Notes model"></a>Technical Notes: The Multivariate Adaptive Regression Splines (MARSplines) Model</h2>
+<p>The MARSplines algorithm builds models from two sided truncated functions of the predictors (x) of the form:</p>
+<p><img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; width: 183px; float: none; height: 43px; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSPLINEequation2.gif" border="0"></p>
+<p>These serve as <a href="http://www.statsoft.com/textbook/statistics-glossary/b.aspx?button=b#Basis%20Functions">basis functions</a> for linear or nonlinear expansion that approximates some true underlying function <span style="font-style: italic">f(x)</span>.</p>
+<p>The MARSplines model for a dependent (outcome) variable <span style="font-style: italic">y</span>, and <span style="font-style: italic">M</span> terms , can be summarized in the following equation:</p>
+<p><img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; width: 216px; float: none; height: 39px; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSPLINEequation3.gif" border="0"></p>
+<p>where the summation is over the <span style="font-style: italic">M</span> terms in the model, and <span style="font-family: Symbol, serif">b</span><span style="font-style: italic; font-size: 8pt; vertical-align: sub">o</span> and <span style="font-family: Symbol, serif">b</span><span style="font-style: italic; font-family: Arial, sans-serif; font-size: 8pt; vertical-align: sub">m</span> are parameters of the model (along with the knots <span style="font-style: italic">t</span> for each <a href="http://www.statsoft.com/textbook/statistics-glossary/b.aspx?button=b#Basis%20Functions">basis function</a>, which are also estimated from the data). Function <span style="font-style: italic">H</span> is defined as:</p>
+<p><img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; width: 132px; float: none; height: 39px; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSPLINEequation4.gif" border="0"></p>
+<p>where <span style="font-style: italic">xv(k,m)</span> is the predictor in the k'th of the m'th product. For order of interactions <span style="font-style: italic">K=1</span>, the model is additive and for <span style="font-style: italic">K=2</span> the model pairwise interactive.</p>
+<p>During forward stepwise, a number of basis functions are added to the
+ model according to a pre-determined maximum which should be 
+considerably larger (twice as much at least) than the optimal (best 
+least-squares fit).</p>
+<p>After implementing the forward stepwise selection of basis functions,
+ a backward procedure is applied in which the model is pruned by 
+removing those basis functions that are associated with the smallest 
+increase in the (least squares) goodness-of-fit. A least squares error 
+function (inverse of goodness-of-fit) is computed. The so-called 
+Generalized Cross Validation error is a measure of the goodness of fit 
+that takes into account not only the residual error but also the model 
+complexity as well. It is given by</p>
+<p><img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; width: 154px; float: none; height: 86px; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSPLINEequation5.gif" border="0"></p>
+<p>with</p>
+<p><img alt="" x-maintain-ratio="TRUE" style="border-bottom: medium none; border-left: medium none; width: 66px; float: none; height: 11px; border-top: medium none; border-right: medium none" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/MARSPLINEequation6.gif" border="0"></p>
+<p>where <span style="font-style: italic">N</span> is the number of cases in the data set, <span style="font-style: italic">d</span> is the effective degrees of freedom, which is equal to the number of independent basis functions. The quantity <span style="font-style: italic">c</span> is the penalty for adding a basis function. Experiments have shown that the best value for <span style="font-style: italic">C</span> can be found somewhere in the range <span style="font-style: italic">2 &lt; d &lt; 3</span> (see Hastie et al., 2001).</p>
+<table align="right">
+    <tbody>
+        <tr>
+            <td><a href="http://www.statsoft.com/textbook/multivariate-adaptive-regression-splines/#index"><font size="1">To index</font></a></td>
+        </tr>
+    </tbody>
+</table>
+<p><br>
+&nbsp;</p>
+	</div>
+
+</div><!-- End_Module_1512 --></div>
+</div>
+<div class="c_footer">
+    
+    
+
+    
+</div>
+</div><div class="DnnModule DnnModule-DNN_HTML DnnModule-2470"><a name="2470"></a>
+<div class="c_head c_head_blue">
+    <div class="head_title">
+        <!--div class="c_actions">
+            
+        </div-->
+        <div class="c_icon">
+            
+        </div>
+ 
+    </div>
+    <!--div class="title_vis">
+        <a onclick="if (__dnn_ContainerMaxMin_OnClick(this, 'dnn_ctr2470_ModuleContent')) return false;" id="dnn_ctr2470_dnnVISIBILITY_cmdVisibility" title="Minimize" href="javascript:__doPostBack('dnn$ctr2470$dnnVISIBILITY$cmdVisibility','')"><img id="dnn_ctr2470_dnnVISIBILITY_imgVisibility" title="Minimize" src="/Portals/_default/Containers/StatSoft/images/DNN-minus.gif" alt="Minimize" style="border-width:0px;" /></a>    
+    </div-->
+
+</div>
+<div class="c_content">
+    <div id="dnn_ctr2470_ContentPane" class="Normal c_contentpane">
+    <!-- Start_Module_2470 --><div id="dnn_ctr2470_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr2470_HtmlModule_lblContent" class="Normal">
+	<script type="text/javascript"> 
+  var cdJsHost = (("https:" == document.location.protocol) ? "https://" : "http://"); 
+  document.write(unescape("%3Cscript src='" + cdJsHost + "analytics.clickdimensions.com/ts.js' type='text/javascript'%3E%3C/script%3E")); 
+</script><script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/ts.js" type="text/javascript"></script>
+<script type="text/javascript"> 
+  var cdAnalytics = new clickdimensions.Analytics('analytics.clickdimensions.com'); 
+  cdAnalytics.setAccountKey('ar5W298OnEUiUGcwmUiCut'); 
+  cdAnalytics.setDomain('statsoft.com'); 
+  cdAnalytics.trackPage(); 
+</script> 
+<!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-S9LQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-S9LQ');</script><!-- End Google Tag Manager -->
+</div>
+
+</div><!-- End_Module_2470 --></div>
+</div>
+<div class="c_footer">
+    
+    
+
+    
+</div>
+</div></div>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+    
+
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-385206-1");
+pageTracker._initData();
+pageTracker._setDomainName("statsoft.com");
+pageTracker._trackPageview();
+document.getElementById('').scrollIntoView(true);pageTracker._setVar('');pageTracker._addTrans('Multivariate Adaptive Regression Splines (MARSplines), 2:27:39 PM, Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines) '); pageTracker._addItem(' Multivariate Adaptive Regression Splines (MARSplines),2:27:39 PM,Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines),Multivariate Adaptive Regression Splines (MARSplines)');
+    
+    
+    
+    
+  
+   pageTracker._trackTrans();
+
+</script>
+
+
+
+
+
+
+
+
+        <input name="ScrollTop" id="ScrollTop" type="hidden">
+        <input name="__dnnVariable" id="__dnnVariable" value="{&quot;__scdoff&quot;:&quot;1&quot;,&quot;containerid_dnn_ctr1512_ModuleContent&quot;:&quot;1512&quot;,&quot;cookieid_dnn_ctr1512_ModuleContent&quot;:&quot;_Module1512_Visible&quot;,&quot;min_icon_1512&quot;:&quot;/Portals/_default/Containers/StatSoft/images/DNN-minus.gif&quot;,&quot;max_icon_1512&quot;:&quot;/Portals/_default/Containers/StatSoft/images/DNN-plus.gif&quot;,&quot;max_text&quot;:&quot;Maximize&quot;,&quot;min_text&quot;:&quot;Minimize&quot;,&quot;containerid_dnn_ctr2470_ModuleContent&quot;:&quot;2470&quot;,&quot;cookieid_dnn_ctr2470_ModuleContent&quot;:&quot;_Module2470_Visible&quot;,&quot;min_icon_2470&quot;:&quot;/Portals/_default/Containers/StatSoft/images/DNN-minus.gif&quot;,&quot;max_icon_2470&quot;:&quot;/Portals/_default/Containers/StatSoft/images/DNN-plus.gif&quot;}" type="hidden">
+        
+    
+<script type="text/javascript" src="Multivariate%20Adaptive%20Regression%20Splines%20%28MARSplines%29_files/initWidgets.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+//]]>
+</script>
+</form>
+
+</body></html>
