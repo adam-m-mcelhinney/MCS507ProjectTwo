@@ -12,6 +12,7 @@ from Orange.regression import earth
 import numpy
 from numpy import linspace
 from matplotlib import pylab as pl
+from matplotlib import pyplot as py
 
 ### Change working directory if needed
 import os
@@ -25,16 +26,27 @@ os.getcwd()
 data = orange.ExampleTable("housing")
 print data.domain.attributes
 
+names=str(data.domain).replace('[','').replace(']','').split(',')
+# Make Scatterplots of all the variables versus the target variable
+def scatterplot(data, data_name, target_var):
+    import matplotlib.pyplot as plt
+    M = len(data[0])-1
+    N=len(data)
+    fig = plt.figure()
 
-def get_var_names(att):
-    names=[]
-    for i in range(0,len(att)):
-        st=str(list(data.domain.attributes)[i]).split('\'')
-        print st
-        names.append(st[1])
-    return names
+    y=[float(data[l][target_var]) for l in range(N)]
 
-names=get_var_names(data.domain.attributes)
+    for i in range(M):
+        ax = fig.add_subplot(int(M/4.)+1,4,i+1)
+        py.setp(ax.get_xticklabels(), visible=False)
+        x=[float(data[k][i]) for k in range(N)]
+        ax.scatter(x,y)
+        #ax.set_xlabel(data_name[i],size='10')
+        ax.set_title(data_name[i],size='10')
+        #ax.set_ylabel(data_name[target_var],size='10')
+    return fig
+fig = scatterplot(data, names, len(data[0])-1)
+fig.savefig('C:/Documents and Settings/amcelhinney/My Documents/GitHub/MCS507ProjectTwo/data/scatter.png')
     
 
 
@@ -55,15 +67,32 @@ for i in range(0,len(dl)):
     t=earth_predictor.predict(dl[i])
     y_hat.append(t[0])
 
-
-
+os.chdir("C:/Documents and Settings/amcelhinney/My Documents/GitHub/MCS507ProjectTwo/src/")
+from earth_example import rss
 X, Y = data.to_numpy("A/C")
-for i in range(0,len(names)):
-    print i
-    pl.plot(X[:,i],Y, ".r")
-    X_dat=list(X[:,i])
-    pl.plot(X_dat,y_hat, ".b")
-    pl.title(names[i])
-    pl.show()
-    
-#Orange.regression.earth.plot_evimp(earth_predictor.evimp())
+
+y_1=rss(Y,y_hat)
+Orange.regression.earth.plot_evimp(earth_predictor.evimp())
+
+# Compute using the standard regression model
+import ols
+model=ols.ols(Y,X,names[len(names)-1],names[:len(names)-1])
+model.summary()
+# Get the regression coefficients
+coeff=model.b
+# Score the data
+y_hat_ols=[]
+for i in range(len(data)):
+    y_hat=coeff[0]
+    for j in range(len(coeff)-1):
+        #print coeff[j+1]
+        #print data[i][j]
+        y_hat=y_hat+data[i][j]*coeff[j+1]
+    y_hat_ols.append(y_hat)
+# Compute the RSS
+y_2=rss(Y,y_hat_ols)
+        
+
+
+
+

@@ -34,26 +34,47 @@ pl.title('Example Data Set with Line Fit by MARS')
 pl.show()
 
 
-##x=[]; y=[]
-##for i in range(len(X)):
-##    #print i
-##    x.append(float(X[i]))
-##    y.append(float(Y[i]))
-##
-##
-### 3rd, 4th, 5th degree polys
-##p3=polyfit(x,y,3)
-##pp3=poly1d(p3)
-##
-##p4=polyfit(x,y,4)
-##pp4=poly1d(p4)
-##
-##p5=polyfit(x,y,5)
-##pp5=poly1d(p5)
-##
-##pl.plot(X, Y, ".r")
-##pl.plot(linspace, predictions, "-b")
-####pl.plot(linspace,pp3(linspace),"-g")
-####pl.plot(linspace,pp4(linspace),"-m")
-####pl.plot(linspace,pp5(linspace),"-y")
-##pl.show()
+x=[]; y=[]
+for i in range(len(X)):
+    #print i
+    x.append(float(X[i]))
+    y.append(float(Y[i]))
+
+
+# 3rd, 4th, 5th degree polys
+p3=polyfit(x,y,3)
+pp3=poly1d(p3)
+
+p4=polyfit(x,y,4)
+pp4=poly1d(p4)
+
+p5=polyfit(x,y,5)
+pp5=poly1d(p5)
+
+pl.plot(X, Y, ".r")
+pl.plot(linspace, predictions, "-b")
+pl.plot(linspace,pp3(linspace),"-g")
+pl.plot(linspace,pp4(linspace),"-m")
+pl.plot(linspace,pp5(linspace),"-y")
+pl.title('Example Data Set with Line Fit by MARS and Higher Order Polynomials')
+pl.legend(['Data','Mars','3rd Degree','4th Degree','5th Degree'],loc=2)
+pl.show()
+
+# Create function to calc RSS
+def rss(y_obs, y_predicted):
+    r=0
+    for i in range(len(y_obs)):
+        t=(y_obs[i]-y_predicted[i])**2.
+        r=r+t
+    return r
+
+# Calc RSS for all models
+y_predicted1=[earth_predictor([X[i], "?"]) for i in range(len(X))]
+y_predicted3=pp3(X)
+y_predicted4=pp4(X)
+y_predicted5=pp5(X)
+
+r1=rss(Y,y_predicted1)
+r3=rss(Y,y_predicted3)
+r4=rss(Y,y_predicted4)
+r5=rss(Y,y_predicted5)
