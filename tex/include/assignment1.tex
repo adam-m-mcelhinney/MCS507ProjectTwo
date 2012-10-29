@@ -10,7 +10,7 @@ Our first objective is to identify the main problem this software aims to solve.
 
 \subsection{Main Problem this Software Aims to Solve} % (fold)
 \label{sub:methoda}
-The Earth software package is an implementation of the Multivariate Adaptive Regression Splines (MARS) technique developed by Jerome H. Friedman of Stanford University. Interestingly, the reference MARS is copy written, thus open source implementations of the software are referred to as Earth. The purpose of this technique is similar to that of all regression techniques, namely to fit a function to a set of data. However, the Earth software specifically seeks to do this in a manner that has the following advantages:
+The Earth software package is an implementation of the Multivariate Adaptive Regression Splines (MARS) technique developed by Jerome H. Friedman of Stanford University (Friedman 1991, p. 1-67). Interestingly, the reference MARS is copy written, thus open source implementations of the software are referred to as Earth. The purpose of this technique is similar to that of all regression techniques, namely to fit a function to a set of data. However, the Earth software specifically seeks to do this in a manner that has the following advantages (StatSoft, 10/15/2012):
 \begin{enumerate}
 \item Ability to easily handle non-linear data sets
 \item Ease of interpretation 
@@ -52,7 +52,7 @@ To fit this model, the Earth software relies on two distinct steps.
 
 \item Forward Pass: In this step, the model starts with just one intercept term composed of the mean of the target (y) variables. Then the software divides the data into two distinct sets via a pair of basis functions. The area dividing point between these two areas is the knot referred to in equation 1. The position of this knot is calculated such that it results in the maximum reduction in the $RSS$ in equation 2. This process is repeated until the software has reached a maximum number of terms (as defined by the user prior to initializing the model), or until the change in $RSS$ is too small to continue.
 
-\item Backward Pass: The result of the first step will be a model that fits the data set extremely closely, however it is likely that the model will generalize well to other data. Thus, the backward pass (sometimes referred to as pruning) is applied. In this step, the model searches for the basis functions that contribute to the smallest increase in the goodness of fit. However, the $RSS$ will always favor a model with more parameters, so a goodness of fit measure that penalizes additional parameters is needed. This is referred to as the Generalized Cross Validation $GCV$.
+\item Backward Pass: The result of the first step will be a model that fits the data set extremely closely, however it is likely that the model will generalize well to other data. Thus, the backward pass (sometimes referred to as pruning) is applied. In this step, the model searches for the basis functions that contribute to the smallest increase in the goodness of fit. However, the $RSS$ will always favor a model with more parameters, so a goodness of fit measure that penalizes additional parameters is needed. This is referred to as the Generalized Cross Validation $GCV$ ("Multivariate Adaptive Regression Splines" Wikipedia, 10/18/2012).
 
 
 
